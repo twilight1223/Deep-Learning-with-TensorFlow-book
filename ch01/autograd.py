@@ -5,6 +5,7 @@ a = tf.constant(1.)
 b = tf.constant(2.)
 c = tf.constant(3.)
 w = tf.constant(4.)
+print([w])
 
 
 with tf.GradientTape() as tape:# 构建梯度环境

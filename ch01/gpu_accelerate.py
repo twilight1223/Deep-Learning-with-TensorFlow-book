@@ -1,6 +1,7 @@
 import  numpy as np
 import  matplotlib
 from    matplotlib import pyplot as plt
+
 # Default parameters for plots
 matplotlib.rcParams['font.size'] = 20
 matplotlib.rcParams['figure.titlesize'] = 20
