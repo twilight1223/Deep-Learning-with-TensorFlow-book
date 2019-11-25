@@ -6,6 +6,10 @@ import  tensorflow as tf
 from    tensorflow import keras
 from    tensorflow.keras import layers, optimizers, datasets
 
+# KL = keras.layers
+# KO = keras.optimizers
+# KD = keras.datasets
+
 
 
 
@@ -15,7 +19,7 @@ y = tf.convert_to_tensor(y, dtype=tf.int32)
 y = tf.one_hot(y, depth=10)
 print(x.shape, y.shape)
 train_dataset = tf.data.Dataset.from_tensor_slices((x, y))
-train_dataset = train_dataset.batch(200)
+train_dataset = train_dataset.batch(200)#batch_size:一次训练200个样本
 
  
 
@@ -55,7 +59,7 @@ def train_epoch(epoch):
 
 def train():
 
-    for epoch in range(30):
+    for epoch in range(10):
 
         train_epoch(epoch)
 
