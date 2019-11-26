@@ -13,7 +13,8 @@ from    tensorflow.keras import layers, optimizers, datasets
 
 
 
-(x, y), (x_val, y_val) = datasets.mnist.load_data() 
+(x, y), (x_val, y_val) = datasets.mnist.load_data()
+print(x)
 x = tf.convert_to_tensor(x, dtype=tf.float32) / 255.
 y = tf.convert_to_tensor(y, dtype=tf.int32)
 y = tf.one_hot(y, depth=10)
