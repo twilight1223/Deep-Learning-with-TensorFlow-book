@@ -5,6 +5,10 @@ from    tensorflow.keras import datasets
 import  os
 
 
+from tensorflow_core.python import keras
+keras.layers
+
+
 # 合并concat：不会产生新的维度
 # a = tf.random.normal([4,35,8]) # 模拟成绩册A
 # b = tf.random.normal([6,35,8]) # 模拟成绩册B

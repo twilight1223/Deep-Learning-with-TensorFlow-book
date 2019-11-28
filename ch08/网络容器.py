@@ -3,29 +3,27 @@
 
 from tensorflow.keras import layers,Sequential
 from tensorflow.keras import optimizers,losses
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
 import tensorflow as tf
+import pandas as pd
+
+X,y = datasets.make_moons(n_samples=2000,random_state=100)
+x_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=101)
 
 model = Sequential([
-    layers.Dense(12,tf.nn.sigmoid),
-    layers.Dense(10,tf.nn.softmax)
+    layers.Dense(12,tf.nn.relu),
+    layers.Dense(2,tf.nn.sigmoid)
 ])
-x = tf.random.normal([10,10])
-y = tf.constant([1,2,3,4,5,6,7,8,9,0])
-y = tf.one_hot(y,depth=10)
-out = model(x)
-mse = tf.keras.losses.MSE(out,y)
-print(mse)
-print(model.summary())
-
-for v in model.trainable_variables:
-    print(v.name,v.shape)
+model.build(input_shape=(None,2))
 
 model.compile(optimizer = optimizers.Adam(),
               loss = losses.CategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-history = model.fit(x,y,epochs=5)
+history = model.fit(x_train,y_train,epochs=5,batch_size=128,verbose=1)
 print(history.history)
+
 
 
 

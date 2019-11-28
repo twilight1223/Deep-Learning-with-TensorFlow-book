@@ -6,26 +6,27 @@ from tensorflow.keras import layers
 import matplotlib.pyplot as plt
 
 #%%
-x = tf.range(10)
-x = tf.random.shuffle(x)
-# 创建共10个单词，每个单词用长度为4的向量表示的层
-net = layers.Embedding(10, 4)
-out = net(x)
-
-out
-#%%
-net.embeddings
-net.embeddings.trainable
-net.trainable = False
+# x = tf.range(10)
+# x = tf.random.shuffle(x)
+# # 创建共10个单词，每个单词用长度为4的向量表示的层
+# net = layers.Embedding(10, 4)
+# out = net(x)
+# print(out)
+#
+# out
+# #%%
+# net.embeddings
+# net.embeddings.trainable
+# net.trainable = False
 #%%
 # 从预训练模型中加载词向量表
-embed_glove = load_embed('glove.6B.50d.txt')
-# 直接利用预训练的词向量表初始化Embedding层
-net.set_weights([embed_glove])
-#%%
-cell = layers.SimpleRNNCell(3)
-cell.build(input_shape=(None,4))
-cell.trainable_variables
+# embed_glove = load_embed('glove.6B.50d.txt')
+# # 直接利用预训练的词向量表初始化Embedding层
+# net.set_weights([embed_glove])
+# #%%
+# cell = layers.SimpleRNNCell(3)
+# cell.build(input_shape=(None,4))
+# cell.trainable_variables
 
 
 #%%
