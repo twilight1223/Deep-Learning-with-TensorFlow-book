@@ -28,17 +28,19 @@ x = tf.random.normal([4,80,64])
 # print(out)
 
 # 多层循环网络
-
-model = Sequential([
-    layers.SimpleRNNCell(64),
-    layers.SimpleRNNCell(64)
-])
-
 h0 = [tf.zeros([4,64])]
 h1 = [tf.zeros([4,64])]
+
+cell1 = layers.SimpleRNNCell(64)
+cell2 = layers.SimpleRNNCell(64)
+
+
+
+
 for xt in tf.unstack(x,axis=1):
-    out,h = model(xt,h0,h1)
-print(out.shape)
+    out0,h0 = cell1(xt,h0)
+    out1,h1 = cell2(out0,h1)
+print(out1.shape)
 
 
 
